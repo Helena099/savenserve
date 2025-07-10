@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaveNServe - Solution intelligente contre le gaspillage alimentaire</title>
+    <style>
+        :root {
+            --primary-color: #81B622;
+            --secondary-color: #004AAD;
+            --light-bg: #F5F5F0;
+            --dark-text: #333333;
+            --light-text: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            color: var(--light-text);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #00377e;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(rgba(129, 182, 34, 0.1), rgba(129, 182, 34, 0.2));
+        }
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Team */
+        .team {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .team h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--primary-color);
+        }
+        
+        .team-member h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        footer h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: var(--light-text);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <img src="SaveNServe Logo.png" alt="SaveNServe Logo">
+            </div>
+            <a href="file:///C:/Users/onana/Desktop/ServeNSave/Prototype/Serveandsave/savenserve-dashboard.html" class="cta-button">Découvrir notre solution</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Réduire le gaspillage alimentaire, une solution à la fois</h2>
+                            <p>SaveNServe aide les professionnels de la restauration à optimiser leurs ressources alimentaires grâce à une technologie innovante basée sur l'intelligence artificielle.</p>
+                
+                <div style="margin-top: 40px; display: flex; justify-content: center;">
+                    <a href="#" class="cta-button" style="background-color: var(--primary-color); font-size: 18px; padding: 15px 30px; margin-right: 20px;">S'inscrire maintenant</a>
+                    <a href="file:///C:/Users/onana/Desktop/ServeNSave/Prototype/Serveandsave/savenserve-dashboard.html" class="cta-button" style="font-size: 18px; padding: 15px 30px;">Commencez votre essai</a>
+                </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>Notre Mission</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>SaveNServe est une entreprise innovante spécialisée dans la gestion intelligente et durable des déchets alimentaires pour les restaurants, cafés et établissements de restauration collective.</p>
+                    <p>Grâce à nos technologies de pointe comme l'intelligence artificielle, nous permettons aux professionnels de :</p>
+                    <ul style="margin-left: 20px; margin-top: 15px;">
+                        <li>Réduire leur gaspillage alimentaire</li>
+                        <li>Optimiser leurs coûts d'approvisionnement</li>
+                        <li>Sensibiliser leurs équipes aux pratiques écoresponsables</li>
+                    </ul>
+                    <p style="margin-top: 20px;">Notre mission est à la fois simple et puissante : diminuer le gaspillage alimentaire à la source pour un avenir plus durable et rentable.</p>
+                </div>
+                <div class="about-image">
+                    <img src="Dashboard SaveNServe.png" alt="Dashboard SaveNServe">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>Nos Forces</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Notre système IA analyse les tendances de consommation et de gaspillage pour proposer des solutions personnalisées.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Tableaux de bord interactifs</h3>
+                    <p>Visualisez et comprenez les origines de votre gaspillage en temps réel grâce à nos outils de suivi automatisés.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Gamification pour les équipes</h3>
+                    <p>Engagez votre personnel grâce à des éléments ludiques qui favorisent l'adoption de pratiques durables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <h2>Notre Équipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="Ralph Mbagnia.jpeg" alt="Ralph Mbagnia">
+                    <h3>Ralph Mbagnia</h3>
+                    <p>Co-fondateur & Directeur Technique</p>
+                    <p>Expert en intelligence artificielle et développement durable.</p>
+                </div>
+                <div class="team-member">
+                    <img src="Héléna Onana.jpg" alt="Héléna Onana">
+                    <h3>Héléna Onana</h3>
+                    <p>Co-fondatrice & Directrice Marketing</p>
+                    <p>Spécialiste en stratégies marketing et relations clients.</p>
+                </div>
+                <div class="team-member">
+                    <img src="Evanna Da Veiga.jpg" alt="Evanna Da Veiga">
+                    <h3>Evanna Da Veiga</h3>
+                    <p>Co-fondatrice & Directrice Opérations</p>
+                    <p>Experte en gestion de projet et optimisation des processus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h2>Prêt à réduire le gaspillage alimentaire ?</h2>
+                <p>Découvrez notre maquette et commencez votre parcours vers une restauration plus durable dès aujourd'hui.</p>
+                <a href="file:///C:/Users/onana/Desktop/ServeNSave/Prototype/Serveandsave/savenserve-dashboard.html" class="cta-button" style="margin-top: 20px;">Accéder à la maquette</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SaveNServe. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
